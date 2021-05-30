@@ -7,12 +7,18 @@ Tabela de conteúdos
    * [Tecnologias](#Principais-tecnologias)
 <!--te-->
 <h4 align="center">
- <b>TEMPO</b> 🦸‍♂️
+ <b>Sandrovisky</b> 🦸‍♂️
 </h4>
 
 <br>
 
 ### Sobre
+
+<p align="center">🚀 Projeto desenvolvido para um teste</p>
+
+<p>
+Esta aplicação fara uma busca na API [ViaCEP](https://pt-br.reactjs.org/)
+</p>
 
 <h4 align="center">
     <a href="https://pt-br.reactjs.org/">🔗 React</a>
@@ -22,7 +28,6 @@ Tabela de conteúdos
     <a href="https://nextjs.org/">🔗 NextJs</a>
 </h4>
 
-<p align="center">🚀 Projeto desenvolvido para um teste</p>
 
 <h4 align="center"> 
 	Template utilizado: <a href="https://demos.creative-tim.com/nextjs-material-kit/components" >🔗 by Creative Tim </a>
@@ -34,10 +39,7 @@ Tabela de conteúdos
 
 ### Features
 
-- [x] Cadastro de Cliente
-- [x] Cadastro de Produto
-- [x] Cadastro de Pedido
-- [x] Listagem de Pedido
+- [x] Consultas de CEP via APIs
 
 ### Como usar
 
@@ -52,7 +54,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ```bash
 
 # Clone este repositório
-$ git clone <https://github.com/sandrovisky/teste-telecom-front>
+$ git clone <https://github.com/sandrovisky/teste-cep-front>
 
 # Acesse a pasta do projeto no terminal/cmd
 
@@ -60,7 +62,7 @@ $ git clone <https://github.com/sandrovisky/teste-telecom-front>
 $ yarn install ou npm install
 
 # Configure a API
-Esteja rodando a API <https://github.com/sandrovisky/teste-telecom-back>, acesse o arquivo services/api.js e insira o endereço da sua API
+Esteja rodando a API <https://github.com/sandrovisky/teste-cep-back>, acesse o arquivo services/api.js e insira o endereço da sua API
 
 # Execute a aplicação 
 executar yarn build ou npm build
