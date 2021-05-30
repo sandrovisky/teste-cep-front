@@ -17,8 +17,11 @@ Tabela de conteúdos
 <p align="center">🚀 Projeto desenvolvido para um teste</p>
 
 <p>
-Esta aplicação fara uma busca na API [ViaCEP](https://pt-br.reactjs.org/)
-</p>
+Esta aplicação fara uma busca na API <a href="https://viacep.com.br/"ViaCEP</a> a partir do CEP informado e retornara dados como:
+	estado, cidade, rua, etc.
+Caso o CEP ja nunca tenha sido pesquisado anteriormente, os dados retornado da API serão salvos em um outro banco de dados, e na proxima vez em que ele for consultado os dados
+	serao buscados do banco, e não da API
+	
 
 <h4 align="center">
     <a href="https://pt-br.reactjs.org/">🔗 React</a>
