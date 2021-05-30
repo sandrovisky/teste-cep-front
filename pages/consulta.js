@@ -18,20 +18,20 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
-
 import styles from "assets/jss/nextjs-material-kit/pages/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
-//import api from "../services/api";
+
 import apiCEP from "../services/apiCEP";
-import { InputLabel, MenuItem, Select } from "@material-ui/core";
+import api from "../services/api";
 
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
     const [loading, setloading] = useState(false)
-    const [cep, setCEP] = useState('')    
+    const [cep, setCEP] = useState('')
     const [dados, setDados] = useState('')
+    const [obtido, setObtido] = useState('')
     
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     setTimeout(function() {
@@ -42,13 +42,36 @@ export default function LoginPage(props) {
 
     async function buscarCep(e) {
         e.preventDefault()
-        await apiCEP.get(`/${cep}/json`)
-        .then(res => {
-            setDados(res.data) 
-        })
-        .catch(() => {
-            alert("Nenhum cadastro encontrado para esse CEP")
-        })
+
+        try {
+
+            const res = await api.get(`/ceps/${cep}`)
+            setDados(res.data)
+            setObtido("Banco de Dados")
+
+        } catch {  
+            try {
+
+                const res = await apiCEP.get(`/${cep}/json`)
+                setDados(res.data)
+                setObtido("API")
+                const data = {
+                    cep: cep,
+                    logradouro: res.data.logradouro,
+                    complemento: res.data.complemento,
+                    bairro: res.data.bairro,
+                    localidade: res.data.localidade,	
+                    uf: res.data.uf
+                }
+                await api.post('/ceps', data)
+
+            } catch{
+
+                setDados('')
+                alert("Nenhum cadastro encontrado para esse CEP")
+
+            }
+        }       
     }
 
     return (
@@ -100,6 +123,7 @@ export default function LoginPage(props) {
                                 {
                                     dados &&
                                     <div>
+                                        Obtido de: {obtido} <br />
                                         UF: {dados.uf}  Cidade: {dados.localidade} <br />
                                         Bairro: {dados.bairro} <br />
                                         Rua: {dados.logradouro} <br />
@@ -109,7 +133,7 @@ export default function LoginPage(props) {
                             </CardBody>
                             <CardFooter className={classes.cardFooter}>
                                 <Button simple color="primary" type = "submit" size="lg">
-                                Cadastrar
+                                Consultar
                                 </Button>
                             </CardFooter>
                             </form>
